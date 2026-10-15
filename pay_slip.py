@@ -1,26 +1,29 @@
+#Ibet Abdul-muhssin Jabir
+
+#Constant Variables declaration
 total_slips = 0
 net_pay = 0
 total_net_pay = 0.0
 highest_net_pay = -1.0
 highest_paid_name = "none"
-tax_rate = 0.0
-pension_rate = 0.0
+TAX_RATE = 0.0
+PENSION_RATE = 0.0
 
 print("-------payroll processing system")
+#initializing while loop
 while True:
     employee_name = input("enter employee name: ").strip()
     if not employee_name:
         print("employee name cannot be empty.")
         continue
 
-    try:
-        hours = float(input("enter hours worked: "))
-        rate = float(input("enetr hourly rate: "))
-        tax_rate = float(input("enter tax rate: "))
-        pension_rate = float(input("enter pension rate: "))
-    except ValueError:
-        print("invalid numeric input. skipping this employee.")
-        continue
+    hours = float(input("enter hours worked: "))
+    rate = float(input("enetr hourly rate: "))
+    TAX_RATE = float(input("enter tax rate: "))
+    PENSION_RATE  = float(input("enter pension rate: "))
+    ValueError 
+
+    print("invalid numeric input. skipping this employee.")
 
     if hours < 0 or hours > 300 or rate <= 0:
         print("invalid entry")
@@ -28,13 +31,23 @@ while True:
 
     regular_hours = min(hours, 160)
     overtime_hours = max(hours - 160, 0)
-    regular_pay = regular_hours * rate
-    overtime_pay = overtime_hours * rate * 1.5
+    regular_pay = regular_hours * TAX_RATE
+    overtime_pay = overtime_hours * TAX_RATE * 1.5
     gross_pay = regular_pay + overtime_pay
 
-    tax_amount = gross_pay * tax_rate
-    pension_amount = gross_pay * pension_rate
+    tax_amount = gross_pay * TAX_RATE
+    pension_amount = gross_pay * PENSION_RATE
     net_pay = gross_pay - tax_amount - pension_amount
+    if gross_pay == 24000:
+        print(tax_amount)
+        tax_amount = 0.01*gross_pay
+        if gross_pay == 8000:
+            print(tax_amount)
+            tax_amount = 0.25 *gross_pay
+            if gross_pay == 6000:
+             print(tax_amount)
+             tax_amount == 0.30 *gross_pay
+
 
     print(f"employee name: {employee_name}")
     print(f"gross pay: {gross_pay:.2f}")
